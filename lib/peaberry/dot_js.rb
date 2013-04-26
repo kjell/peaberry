@@ -3,11 +3,13 @@
 require 'rack'
 require 'coffee-script'
 require 'sprockets'
+require 'tilt'
 
 module Peaberry
   class DotJs
 
     def initialize
+      Tilt::CoffeeScriptTemplate.default_bare = true
       @sprockets = Sprockets::Environment.new
       dot_js_dir = File.expand_path('~/.js')
       @sprockets.append_path(dot_js_dir)
